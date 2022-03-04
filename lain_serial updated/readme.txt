@@ -1,0 +1,1 @@
+Work in progress ukagaka for Lain from the anime serial experiments lain. Thank you to ad044, ophanimkei, and all of my friends for inspiring me to start this project after talking about it for a year.

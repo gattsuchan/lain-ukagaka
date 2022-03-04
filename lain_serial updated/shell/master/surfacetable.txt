@@ -1,0 +1,6 @@
+//This tiny file clears out the pieces of a surface in the Surface Test option in the Developer's panel. All the numbers that have an asterisk near them. Basically, eye or mouth frames that aren't part of a surface as defined in surfaces.txt. It just makes it easier for you to find a defined surface in Surface Test. No need to touch anything in here.
+
+
+charset,UTF-8
+version,1
+option,DisableNoDefineSurfaces

@@ -1,0 +1,654 @@
+﻿//---------------------------AI Talk--------------------------
+//Alright, this is it! The bread and butter of your ghost. This is where all their random conversations are stored. Of all the .dic files, this is the one you will probably be adding stuff to and updating the most as new dialogue comes to your mind. It is relatively simple in that there aren't many functions or real coding involved with this file, but there are a few cool tricks you can do within randomtalk that can make dialogue with interesting effects, so I'll point them out as we go along.
+//I'm going to leave a lot of examples of different types of dialogue in here that you can study if the possibilities they present intrigue you. Study them carefully!
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+//--AiTalk
+//Leave this alone.
+//Advanced users, this is mostly setting up whether or not dialogue is in a chain before it displays. Again, you can leave it alone unless you want to screw around with chains for some strange reason.
+
+AiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+			if CHAIN.IDName == "" {
+ 				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{ 
+		MikireTalk
+ 		}
+	}
+ }
+
+
+//--RandomTalk 
+ //Alright, here we go! This is where ALL your ghost's random dialogue will go! These are the conversations that they'll have with you or each other that pop up depending on the talk rate defined in menu.dic (or if you ignored that, set in bootend.dic in the first boot, which would be every five minutes).
+ 
+//*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//You CAN link to other pools of dialogue in RandomTalk using envelopes/functions, such as %(teatalk) to pull from a pool of dialogue about tea. Then you'd just add that line in among the other dialogue in here with %(teatalk). However, this vastly lowers the probability of dialogue in that function being called. If teatalk only gets called 1/5 times, and it has 10 pieces of dialogue in there, then you're only getting... uh... god, I'm bad at fractions... 1...50th? a chance that a certain teatalk line will appear. LOOK THE GIST IS THAT THE PROBABILITY GETS LOW. This applies to any kind of dialogue in a conditional. A simpler example would be if you have one piece of normal dialogue, and one piece that's an if check that has four pieces of dialogue in there. You'd end up with a 50% chance to get that normal dialogue, and a 50% chance for ONE of the other four pieces of dialogue... which makes the odds of seeing any specific line in that special dialogue that much lower.
+
+//You can't do things like put OnSystemBoot or something in RandomTalk. You could use \![raise] to pull something though, although I'd be careful about it. More on these kind of things and conditionals in general in the coding page on the walkthrough.
+
+//If you split up RandomTalk with if/else checks, then you can redirect in an If to another function, like... if chargermode == "on" { ChargerChatting } else {normal random talk dialogue}. This would redirect the random dialogue to ChargerChatting instead. You can't just throw a function into RandomTalk directly though, like "dialogue 1" "dialogue 2" OnFunctionname "dialogue 3", that kind of thing. You'll have to split it off into its own if or point to it with an envelope.
+
+//You can do multiple ifs in RandomTalk if required... like an if for if a character is asleep, or if a third character is present, or if they're having a nervous breakdown, or if they're sulking. It depends! You can add a bunch of checks leading to specialized pools if you want. Just make sure you leave some normal dialogue in the last else for RandomTalk (unless you want to redirect that somewhere else with an envelope too... although that seems a bit redundant, honestly.)
+//***********************************************************************
+
+RandomTalk : nonoverlap
+{
+	//Alright, here is where all your dialogue will go. I hope you studied how to format dialogue carefully in the walkthrough, as there is little here I can help you with. You're going to have to write most of it yourself. So instead, I'll give you a set of examples to look at.
+	
+	"\0\s[0]This is a single line of dialogue for the main character. There is no response.\e"
+	
+	"\1\s[10]This is a single line of dialogue for the side character.\e"
+	
+	//Single lines of dialogue like this are simple and easy to do.
+	
+	"\0\s[0]This is a two line piece of dialogue.\w8\1\s[10]This is the second line.\e"
+	
+	"\1\s[10]This is a two line piece of dialogue.\w8\0\s[0]This is the second line.\e"
+	
+	//Here is what a simple two line exchange between your characters might look like. Either character can start a piece of dialogue, it doesn't always have to be the main one.
+	
+	"\0\s[0]This is a three-step piece of dialogue.\w8\1\s[10]Here is the response.\w8\0\s[0]\n\n[half]Here is the third step.\e"
+	
+	//Note here that the code comes back to character 0 and spaces out their second statement with \n\n (or \n\n[half]... really whatever spacing looks best in your balloon). This makes it so the next line of dialogue from them is spaced apart from the previous in the balloon, which will make it easier for your user to read.
+	
+	"\0\s[0]This is a long piece of dialogue.\w8\1\s[10]This is my first response.\w8\0\s[0]\n\n[half]This is my response to that.\w8\1\s[10]\n\n[half]This is my second response.\w8\0\s[0]\n\n[half]And this is my last response.\w8\1\s[10]\n\n[half]This is my final word.\e"
+	
+	//As you can see, you can extend a conversation as long as you want by remembering to space things with \n\n as needed.
+	
+	"\0\s[1]This is dialogue with my embarrassed pose.\w8\1\s[11]This is also dialogue with my embarrassed pose.\e"
+	
+	//Note here that s[0] has become s[1] and s[10] has become s[11]. As I explained in the walkthrough, the \s[] tag determines the pose of your ghost. Poses are defined in surfaces.txt within your shell's folder. If you're following my guidelines for your ghost, you should have around ten poses for each character. You can change the \s[] value depending on what expression you want your ghost to have.
+	
+	"\0\s[5]In this dialogue, I will go from happy \s[4]to sad.\e"
+	
+	//As you can see here, you can change your ghost's expression while they are speaking. This can make their expression vary dynamically depending on what they're talking about.
+	
+	"\0\s[0]I am saying something surprising. \1\s[12]\0\s[0]Triangle is surprised.\e"
+	
+	//You can also change the side character's expression while the other character is talking. Note here that after the surprising statement, Triangle's pose is changed to s[12]. Then the focus is brought back to Girl with the \0 tag and she resumes talking. You can change focus without having the character actually say anything to accomplish just this effect.
+	
+	"\0\s[2]This is my surprised pose.\w8\1\s[12]We are shocked!\e"
+	
+	"\0\s[3]This is my awkward pose.\w8\1\s[13]Check out this anime sweatdrop.\e"
+	
+	"\0\s[4]This is my sad pose.\w8\1\s[14]These are sad times.\e"
+	
+	"\0\s[5]This is my happy pose.\w8\1\s[15]How wonderful!\e"
+	
+	"\0\s[6]This is my contented pose.\w8\1\s[16]Life is good.\e"
+	
+	"\0\s[7]This is my angry pose.\w8\1\s[17]No YOU shut up!\e"
+	
+	"\0\s[8]This is my thoughtful pose.\w8\1\s[18]Where did we put that thing?\e"
+	
+	"\0\s[9]This is my bored pose.\w8\1\s[19]Oh, what a surprise.\e"
+	
+	//Here's dialogue with all of their poses so you can see them in action. Note how the \s number changes for each of them. They don't have to match of course, you can have one character happy and one character sad and do whatever you like. These are just examples you can rewrite as you like with your own dialogue.
+	
+	"\0\s[0]I am pausing for 14ms. \w8\w6The pause is over.\e"
+	
+	//You can use the \w tag to time your dialogue. \w goes from 1-9, although I usually leave it at 8 to be safe, and while you can't go above 9, you can layer \w tags to add up to higher numbers. Here, \w8 and \w6 combine to make 14.
+	
+	"\0\s[0]I am pausing \w4for dramatic \w6emphasis. \w8P\w6 - \w6A - \w6U - \w6S - \w6E.\e"
+	
+	//You can also pause multiple times within sentences, like so. At the end, you can pause between letters if your ghost is spelling something.
+	
+	"\1\s[10]Here is dialogue on one line.\nHere is dialogue on the next line.\e"
+	
+	//You can use \n to move dialogue down one line, like hitting enter once. 
+	
+	"\0\s[0]This is dialogue referring to %(username).\w8\1\s[10]Hello, %(username).\e"
+	
+	//Here, the characters are using the %(username) envelope to use the user's name. More on envelopes in word.dic. You can use any envelope you want in dialogue, practically.
+	
+	"\1\s[10]Here is dialogue using %(username)'s pronouns.\w8\0\s[0]%(heshe) went to the store and got %(himher)self some milk for %(hisher) cat.\e"
+	
+	//You can use the pronouns set up during their first boot (see bootend.dic) or in the config menu (menu.dic) in sentences like this as well. You can see that the envelope %(heshe) replaces where he or she would be in the sentence, and so on for the rest of them. This makes it so they use the correct pronoun in the right place.
+	
+	"\1\s[10]Here we'll use the envelope 'exampleenvelope' to show what it looks like in a balloon.\w8\0\s[0]%(exampleenvelope).\e"
+	
+	//As you can see, you can put any envelope from word.dic in here, as long as you properly format it as an envelope by putting a percent sign in front and putting it in parentheses. %(username), %(icecream), %(bunnies), whatever, this is up to you as long as you've defined it in word.dic. You can see how the values stored in the envelope appear in the balloon when the dialogue is called.
+	//Do note that you cannot put quotation marks in your dialogue. If you're using Notepad++ which you should be doing, you'll see the line break and turn black if you do. Use apostrophes instead.
+	
+	"\1\s[10]Here we'll use the envelope 'blanklist' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist).\e"
+	
+	"\1\s[10]Here we'll use the envelope 'blanklist2' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist2).\e"
+	
+	"\1\s[10]Here we'll use the envelope 'blanklist3' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist3).\e"
+	
+	//And here are more examples using the blanklists I set up in word.dic.
+	
+	"\1\s[10]Here we'll use the envelope 'usersfolder' to pretend to look at the user's files.\w8\0\s[0]Hey, have you looked at %(usersfolder) lately?\w8\1\s[19]\n\n[half]No.\e"
+	
+	//You can use the usersfolder envelope creatively if you like, haha.
+	
+	"\1\s[10]Here we'll use the envelope 'internalenvelope' to show an envelop containing another envelope.\w8\0\s[0]%(internalenvelope).\e"
+	
+	//Here's an example using the internal envelope I mentioned in word.dic. Basically, a function within a function. More on that kind of thing on the coding page of the walkthrough.
+	
+	"\1\s[10]Here is dialogue referring to Anchor 1.\w8\0\s[0]Here is dialogue referring to Anchor 2 and Anchor 3.\e"
+	
+	//Anchor words are defined more in anchor.dic. Note here when you see this dialogue that Anchor 1, 2, and 3 become links when spoken, even if they weren't written as links in the dialogue in this file. This is why anchor words are convenient, you don't have to set up link code every time they say a certain word. Try clicking the links when they appear to see what they lead to. It'll give you an idea of exactly how anchors work.
+	
+	
+	//--Chains
+	//Chain dialogue is unique. A dialogue chain consists of multiple bits of dialogue that get called in order over a period of time.
+	
+	"\0\s[0]This is the first part of a chained dialogue.\w8\1\s[10]Second part to come when we next speak.\e:chain=achain"
+	
+	//Note here that instead of ending the dialogue with the normal end tag of \e, it ends with \e:chain=achain. This will link down below to a chunk of code outside RandomTalk called achain. You can scroll down and find it now if you want. You can name your chain anything you want, it'd just follow the same format of \e:chain=yourchainsname. Once a dialogue has entered a chain, they won't say any other random dialogue until the chain is finished.
+	
+	"\0\s[0]This will lead to the second piece of chained dialogue.\w8\1\s[10]This will have another chain attached to it.\e:chain=anotherchain"
+	
+	//Here, this will link to a different chain to continue the conversation. You can scroll down to the section on chains to see this in action.
+	
+	
+	//--If statements
+	//You can put if statements in RandomTalk! They don't even need Else statements, unless you want to keep two sets of statements completely separate - for example, you have one pool of conversations for when there are two characters, and one for if there are three characters. You wouldn't want these to overlap, so you'd put one pool in the if statement and the other in the else. Most of the time though, you won't need an Else statement for these, since they'll mostly only be adding in dialogue if the if statement is true. 
+	
+	if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
+	{
+	//Then these conversations are available! Note the brackets enclosing this set of dialogue.
+	"\0\s[0]Here is dialogue related to the default shell.\w8\1\s[10]You can use this to comment on clothing your ghost is wearing.\e"
+	
+	"\0\s[0]Here is more dialogue related to the default shell.\e"
+	}
+	
+	//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.
+	if nowshell == "Hypothetical Shell that doesn't actually exist"
+	{
+	"\0\s[0]This is dialogue related to a shell we don't actually have.\w8\1\s[18]Unless it somehow pops into existence.\e"
+	
+	"\0\s[0]This is more dialogue related to a hypothetical shell we don't actually have.\w8\1\s[19]It's not happening.\e"
+	}
+	//After the if statement is done, you can continue with dialogue as normal. As you can see, you can move the ifs around in here, it doesn't really matter. You may want to stick them all in one place together if you want to keep track of them, or you can scatter them around your dialogue as you please. It's up to you. These two lines below are just normal random dialogue.
+	
+	"\1\s[10]This is generic dialogue.\w8\0\s[0]This can be replaced with whatever you want.\e"
+	
+	"\1\s[10]This is more generic dialogue to be replaced.\w8\0\s[0]Do whatever you like with it.\e"
+	
+	//And here we're going to go back into ifs! You see, you can space out your ifs with normal dialogue if you want, as I just mentioned. Anyway, you can set up if statements to check for a lot of different things! One of the cooler ones I think are ones set to check for time. This one for example checks if the month is December.
+	
+	if month >= 12
+	{
+		"\0\s[0]This is dialogue for December.\w8\1\s[18]A cold month?\e"
+		
+		"\0\s[0]This is more dialogue for December.\w8\1\s[18]Still cold?\e"
+	}
+	
+	//So you can use these to check for any number of situations. I think this feature is really neat, so I'm going to set up some quick default responses for the months, days, and time of day. If you don't want to do these, you can just delete this whole set of ifs down to the //--Double Envelopes section below.
+	//You can also nest ifs within these, so you could check if it was the 25 of April in the morning for example. You can also add or take away dialogue from these as you like, so if you want to have five dialogue options for April or one for January, you can totally do that.
+	
+	if month == 1
+	{
+		"\0\s[0]This is dialogue for January.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for January.\w8\1\s[10]That it is.\e"
+	}
+	if month == 2
+	{
+		"\0\s[0]This is dialogue for February.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for February.\w8\1\s[10]That it is.\e"
+	}
+	if month == 3
+	{
+		"\0\s[0]This is dialogue for March.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for March.\w8\1\s[10]That it is.\e"
+	}
+	if month == 4
+	{
+		"\0\s[0]This is dialogue for April.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for April.\w8\1\s[10]That it is.\e"
+	}
+	if month == 5
+	{
+		"\0\s[0]This is dialogue for May.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for May.\w8\1\s[10]That it is.\e"
+	}
+	if month == 6
+	{
+		"\0\s[0]This is dialogue for June.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for June.\w8\1\s[10]That it is.\e"
+	}
+	if month == 7
+	{
+		"\0\s[0]This is dialogue for July.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for July.\w8\1\s[10]That it is.\e"
+	}
+	if month == 8
+	{
+		"\0\s[0]This is dialogue for August.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for August.\w8\1\s[10]That it is.\e"
+	}
+	if month == 9
+	{
+		"\0\s[0]This is dialogue for September.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for September.\w8\1\s[10]That it is.\e"
+	}
+	if month == 10
+	{
+		"\0\s[0]This is dialogue for October.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for October.\w8\1\s[10]That it is.\e"
+	}
+	if month == 11
+	{
+		"\0\s[0]This is dialogue for November.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for November.\w8\1\s[10]That it is.\e"
+	}
+	//These ifs check what day of the week it is.
+	if weekday == 1
+	{
+		"\0\s[0]This is dialogue for Monday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Monday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 2
+	{
+		"\0\s[0]This is dialogue for Tuesday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Tuesday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 3
+	{
+		"\0\s[0]This is dialogue for Wednesday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Wednesday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 4
+	{
+		"\0\s[0]This is dialogue for Thursday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Thursday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 5
+	{
+		"\0\s[0]This is dialogue for Friday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Friday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 6
+	{
+		"\0\s[0]This is dialogue for Saturday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Saturday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 7
+	{
+		"\0\s[0]This is dialogue for Sunday.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for Sunday.\w8\1\s[10]That it is.\e"
+	}
+	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
+	if timeslot == "earlymorning"
+	{
+		"\0\s[0]This is dialogue for the early morning.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for early morning.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "morning"
+	{
+		"\0\s[0]This is dialogue for the morning.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for the morning.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "lunch"
+	{
+		"\0\s[0]This is dialogue for lunch time.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for lunch time.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "afternoon"
+	{
+		"\0\s[0]This is dialogue for the afternoon.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for the afternoon.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "evening"
+	{
+		"\0\s[0]This is dialogue for the evening.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for the evening.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "latenight"
+	{
+		"\0\s[0]This is dialogue for the late night.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for the late night.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "midnight"
+	{
+		"\0\s[0]This is dialogue for midnight.\w8\1\s[10]Yup.\e"
+		
+		"\0\s[0]This is more dialogue for midnight.\w8\1\s[10]That it is.\e"
+	}
+	
+	
+	//--Double Envelopes
+	//If you've gone through word.dic, you may remember a list with two sets of values on each line. This is how you would call something like that! Technically, what I call a double envelope is really an array, or a stored list of values. You can pull certain things out of that list as you need, although it requires some specific formatting. For this example, we'll use the double envelope that cindysuke made that has a Korean word and its definition. This can be a bit complicated, so pay close attention.
+	//If this scares you too much, you can delete the whole thing.
+	
+	//note that this is enclosed in its own set of brackets
+	{
+	_korean = lessonkor //Here, the envelope "lessonkor" (which is in word.dic) is stored as a new temporary value called _korean. You can name the new value anything you like. As a reminder, when coding, it goes "4 = 2 + 2" and not "2 + 2 = 4". The result always comes first!
+	//If you look at lessonkor in word.dic, you'll see it goes "Korean word, meaning". So "Korean word" is the first value in that array, and "meaning" is the second. Arrays always start at 0, as a note.
+	_korword = _korean[0] //Now we make a temporary value called "_korword", which is what will store the Korean word. Since the Korean word is the first value in the array _korean which we just defined, then we can pull that value from the array with _korean[0]. [0] is telling it which entry in the array to take - in this case, the first one (again, arrays start at 0).
+	_kormean = _korean[1] //Now we make a temporary value called "_kormean", which is what will store the meaning of the Korean word. This is the second value in the array, so we can pull it out of _korean by using _korean[1].
+	
+	//Now we put it all together!
+	"\1\s[10]Here is an example of a double envelope. The Korean word is %(_korword).\w8\0\s[0]The word means %(_kormean).\e"
+	
+	//As you can see here, we then use the values we set above for _korword and _kormean up there in the dialogue as our new envelopes. If you're planning on using a double envelope/array like this, study how this works very carefully! If you're good with arrays, you can do a lot with this kind of thing, but I must admit I am terrible with arrays and they're still hard for me to wrap my head around, so I don't have much advice on how to do that kind of thing.
+	//The underscores in front of korword and kormean mean that the value is temporary, and will disappear when the dialogue has finished. More on this kind of thing on the coding page of the walkthrough.
+	
+	//Additional Note - You can't test this kind of dialogue in Script Input. You'll have to wait until it comes up naturally in your ghost's random dialogue.
+	}
+	//That's all for double envelopes! As mentioned, if this scares you, you can delete this chunk and you'll be fine.
+	
+	
+	//Now we're going to go back to normal dialogue for a bit of a break. Feel free to rewrite this all as you like.
+	
+	"\1\s[10]This is another piece of random dialogue to be replaced.\w8\0\s[0]Do whatever you want.\w8\1\n\n[half]\s[15]The power is yours!\w8\0\n\n[half]\s[3]Playing with power even, you could say.\e"
+	
+	"\1\s[10]More dialogue to be replaced.\w8\0\s[0]Remember you can write your own new lines of dialogue too.\w8\1\n\n[half]\s[10]You don't have to only replace the words in these.\e"
+	
+	"\1\s[10]This is another bit of dialogue to be replaced.\w8\0\s[0]aitalk.dic can be as long as you want.\e"
+	
+	"\0\s[6]More dialogue to be replaced.\w8\1\s[15]Follow your heart and write some text!\e"
+	
+	
+	//--Multiple Responses
+	//If you've poked around menu.dic or string.dic or read the walkthrough, you may have seen me touch on setting multiple options for any one given bit of dialogue. This kind of dialogue follows much the same format.
+	
+	{ //Again, note the brackets around these unique bits of dialogue. Dialogue that's more complicated than just a single line of "dialogue/more dialogue/more dialogue/end" usually needs to be put in brackets like this. 
+	
+	"\0\s[0]I am asking you a generic question, Triangle. Generic question?\w8\1\s[10]"
+	//Notice that the last few tags set up Triangle's pose before going into his text below. You don't have to do this if you want each response to have its own pose, but if he'll have the same expression regardless of what he's saying, you might as well save yourself the work. Note this does not end with \e either, since the dialogue isn't done yet.
+	-- //You've probably seen these double dashes before in other .dic files. In this case, these dashes enclose a set of multiple responses. More on double dashes in the coding page on the walkthrough site.
+	"This is my first response."
+	"This is my second response."
+	"This is my third response."
+	"This is my fourth response."
+	"This is my fifth response."
+	"This is my sixth response."
+	//As you can see here, there are six potential replies Triangle might have to Girl's question. Each time this dialogue is called, he will randomly select one response from these six.
+	-- //The closing set of dashes for his dialogue options.
+	"\w8\0\s[0]\n\n[half]" //Now we're going back to Girl to set up for her multiple responses in return. This line of tags mostly just sets up for what she will say. Like above, you can see her pose is set in here with \s[0], so she'll have the same pose for each response, and the consistent spacing with \n\n[half].
+	-- //opening dashes
+	"First response to your response."
+	"Second response to your response."
+	"Third response to your response."
+	"Fourth response to your response."
+	//Following the same pattern as above, Girl will randomly reply with one of these bits of dialogue. Note that these responses are also randomly chosen, so it may go Triangle says response one, Girl says response three, or Triangle says response four, Girl says response two, or so on and so forth. So make sure the exchange will still make sense regardless of what either of them might say.
+	-- //closing dashes
+	"\e" //Dialogue ends
+	}
+	
+	//Here's another example of multiple responses. This one will let you randomly choose something to say in the middle of a sentence.
+	
+	{
+	"\0\s[0]Say either black or white.\w8\1\s[10]What if I say " 
+	-- //opening dashes
+	"green"
+	"red"
+	"purple"
+	"orange"
+	"yellow"
+	"\s[18]magenta" //Notice here I added a tag for his thoughtful pose. If he chooses magenta, he'll do this pose. You can set up individual expressions for each potential choice this way.
+	-- //closing dashes
+	" instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e" //dialogue ends
+	
+	//You can see that this follows the formula of the above, although there's only one set of multiple responses in here, then Triangle continues with his sentence. You can use this feature in many different ways if you're creative.
+	}
+	
+	"\0\s[0]\f[height,20]These words are really large.\f[height,default]\w8\1\s[10]These words are a normal size. \w8\f[height,6]These words are small.\f[height,default]\e"
+	
+	//You can use other fancier SakuraScript bits in your dialogue if you want to get font effects, although I won't get too much into them here. In this case, \f[height,20] changes the height of the font, in this case to 20 or to 6, and then \f[height,default] changes them back to normal. I touch more on this in the SakuraScript page of the walkthrough.
+	
+	"\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
+	
+	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
+	//For the \f[color] tag, the three colors listed are the RGB values of the color you want to use for your text. Change them to whatever color you want to use. \f[default] can be an easy way to quickly go back to the default word setting in your balloon after messing with colors and effects a lot.
+	
+	"\0\s[0]Here's a link to a website. \_a[http://www.website.com/]Right here.\_a\e"
+	
+	//Along the same lines as above, you can use \_a[address] to link to certain things. Note that it ends with \_a to close the link. It's very similar to <a href=address> and </a> in html.
+	
+	"\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	
+	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+	
+	//And so we reach the end of randomtalk! I again reiterate, YOU CAN AND SHOULD WRITE YOUR OWN NEW LINES OF DIALOGUE FOR THIS! I included some random example phrases here for you just to replace the text, but there really aren't that many. You'll want to add more, and doing so is easy! Just copy and paste a line and redo the text. Repeat as many times as you want with as many conversations as you want. You can always expand this section!
+}
+
+
+//--Chains
+//Here is where you will put your bits of chain dialogue. They are outside of RandomTalk, which makes them a bit more flexible as I mentioned above.
+//Each chain function will go through each part of the chain in order even if it's in one function, until it goes to \e:chain=end which will end the chain, as you could probably guess. So you can put the entire chain dialogue into one place.
+
+achain
+{{CHAIN
+	//this will happen the first time the chain is called
+	"\0\s[0]Here is the second part of the chain.\w8\1\s[10]Will there be more?\e"
+	
+	//they will then go to this dialogue next
+	"\0\s[0]This is the third part of chained dialogue.\1\w8\s[10]This will lead to a fourth part.\e"
+	
+	//this will be the last piece of dialogue in the chain, then they will go back to their normal dialogue
+	"\0\s[0]This is the fourth piece of chained dialogue.\1\w8\s[10]This is the end.\e:chain=end"
+}}CHAIN
+
+//Pay careful attention to the CHAIN text and double brackets for these. Double brackets, CHAIN, dialogue, double brackets, CHAIN. If you are planning on making chains, I'd recommend just copying and pasting the chain example here and changing the dialogue and name of the function as you need. Less likely for mistakes to happen, you know?
+//Note also it ends with \e:chain=end, basically ending the chain.
+
+anotherchain
+{{CHAIN
+	"\0\s[0]This is the second example of chained dialogue.\1\w8\s[10]This will only have two parts.\e"
+	
+	"\0\s[0]This is the last piece of the second example of chained dialogue\1\w8\s[10]This will end here.\e:chain=end"
+}}CHAIN
+
+//You can make chains as long or as shot as you want! Just make sure to end the chain when you're done.
+
+
+//Alright, we're done with the random conversations for now, but there are a few other things in aitalk that we'll need to fill out too.
+
+
+//-OnMinuteChange
+//These are time-related bits of dialogue for your ghost to say. If you're uninterested, you can delete it all except for a line for MikireTalk. So it'd look something like
+
+//OnMinuteChange
+//{
+//HourCheck
+//--
+//if mikireflag == 1
+// 	{
+// 		MikireTalk
+//	}
+//}
+
+//But I think these are kind of neat, so I'd leave them myself.
+
+
+//Keeps track of if an hour has passed. Just ignore this.
+HourCheck
+{
+if passmin >= 60
+	{
+		passmin = 0
+		passhour = passhour + 1
+	}
+}
+
+
+OnMinuteChange //This is what will trigger time-based dialogue for your Ghost.
+ {
+	HourCheck //checks to see if an hour has passed, ignore it
+	--
+ 	if minute == 0 //These ifs will check what time it is. Here, it's seeing if the minute equals zero...
+	{
+ 		if hour == 12 //And the hour equals 12, meaning it's noon. You can change this to some other hour if you want.
+		{
+ 			"\0\s[0]It's noon.\w8\1\s[15]Let's have a showdown!\w8\0\n\n[half]\s[9]There are no corrals here, dude.\e"
+			//Replace with appropriate dialogue as you want.
+		}
+ 		elseif hour == 0 //If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+		{
+ 			"\0\s[0]It's midnight!\e"
+ 			"\0\s[0]This is another bit of dialogue for midnight.\w8\1\s[10]BooooOoooOOOooOOOOo.\e"
+ 			"\0\s[0]This is the third bit of dialogue for midnight.\e"
+			//Then replace the dialogue with what's appropriate.
+		}
+		else
+		{
+			"\0\s[0]It's %(hour12)'o clock.\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
+	}
+	//You can also check for more specific times! For example...
+	elseif hour == 23 && minute == 55 //this checks to see if the hour is 23 and the minutes are at 55... essentially, 11:55 pm.
+	{
+		"\0\s[0]5 minutes to midnight.\e"
+		//Replace with what you like!
+	}
+	elseif hour == 7 && minute == 30 && weekday == 0 //Here, it's checking for a specific time on a specific day. You can add things to your time checks just like this by using the AND operator, && (more about operators at the walkthrough page). This adds up to 7:30 am, Sunday. If you have a favorite TV program on at some time, you could have your ghost comment on when it comes on like this.
+	{			
+		"\0\s[0]It's 7:30 on Sunday.\e"
+		//Replace with what's appropriate.
+	}
+	//If you're not interested in these more specific checks, you can delete those last two elseifs and just leave the one for minute==0, or clear them all out as mentioned above, although leave in the HourCheck and mikireflag bits.
+	
+	//Don't touch this part.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+//--OnSecondChange
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+ {
+	if passsec == 59
+ 		{
+	 	passsec = 1
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	if mikireflag == 0 && reference1 == 1 //Dialogue for putting them off the screen. You could make this a unique line if you wanted (Like "Hey! What are you doing?"), and have MikireTalk below be for if they continue to be offscreen ("Why are you leaving me out here? Help!" for example). I'll add an example bit of dialogue and comment it out, you can uncomment it and use it if you like, or just leave it out and use MikireTalk below.
+	{
+		//"\0\s[0]You've moved me off screen."
+		
+		MikireTalk
+	}
+	if mikireflag == 1 && reference1 == 0 //Dialogue for coming back on the screen
+	{
+		EndMikireTalk
+	}
+	mikireflag = reference1 //reference1 is if the ghost is offscreen or not
+	if reference2 == 1
+	{
+ 		//This dialogue is for when the two characters are overlapping each other. If you don't want your characters to care, you can just leave this blank.
+		
+ 		"\0\s[0]Me and Triangle are overlapping.\w8\1\s[19]That's strange since your resolution is %screenwidthx%screenheight, %(username). Shouldn't we have enough space?\4\e"
+		
+		//You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
+		//Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+	}
+ }
+
+ //---- MikireTalk ---------------------------------------------------------------------
+ //MikireTalk is dialogue for when your main character is off-screen. Like if you dragged Girl over to the side of your monitor until she was partially concealed by it.
+ 
+MikireTalk
+ {
+	"\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring her back."
+	//Note the hotkey combo Triangle mentions. He's telling the truth, that should bring her back on the screen.
+ }
+
+ //----EndMikireTalk--------------------------------------------------------------------
+ //For after you bring the character back on screen.
+ 
+EndMikireTalk
+ {
+	"\0\s[0]I'm no longer off the screen.\w8\1\s[19]What a shame.\w8\0\s[9]\n\n[half]Shut up.\e"
+ }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//OnSurfaceRestore is a handy function. What this does is that after a short period of time, the ghost will go back to its default pose, so you won't have a ghost stuck in one expression for too long. It's also helpful if you've made one of the characters disappear using \s[-1] in dialogue and didn't bring them back at the end of it. This will do that for you.
+//I'm going to comment out the if/else statements in this because the circumstances in which they'd come up seem pretty unlikely and unnecessary if you're just going to be making a simple ghost. You can just leave this function alone and move on if you want. However, if you do want to use them, just uncomment the lines by deleting the slashes and fill in the info as you need.
+
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+ {
+ 	//if reference0 == 4 || reference0 == 6 //This is checking what poses they are in. This looks to see if Girl is in pose 4 or pose 6, since she is reference0.
+ 	//{
+ 	//"\1\s[10]You're in a sad pose.\w8\0\s[0]I'll go back to normal then.\e"
+ 	//}
+ 	//elseif reference1 == 14 || reference1 == 16 //This is doing the same but for Triangle, since he's reference1. It looks to see if he's in pose 14 or post 16.
+ 	//{
+ 	//"\0\s[0]You look sad.\w8\1\s[10]I'll go back to normal.\e"
+ 	//}
+ 	//else
+ 	//{
+	"\0\s[0]\1\s[10]\e"
+	//}
+ }
+
+ 
+ //--OnKeyPress
+ //This defines the hotkeys your ghost will use. You can change these to whatever you want, but I don't really know why you would. I'd just leave this alone. Advanced Users can add new hotkeys attached to whatever function if you want.
+ 
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+}
