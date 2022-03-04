@@ -54,7 +54,7 @@ OnFirstBoot
 		//In Notepad++ with C language, you'll also notice that this dialogue is black instead of grey. This is because of the use of the backwards slash as mentioned in the advanced section of the SakuraScripting page. Do you see near the bottom where it has \n\n[half]/ with the other slash at the end before the choices are listed? You will want to replace dialogue up that \n\n[half], but do not mess with the choices beyond that unless you know what you're doing.
 		//Always make sure to keep your dialogue in the quotation marks! And remember, you can't use quotation marks IN dialogue either. You can use two single apostrophes instead if you must. And REMEMBER what I said about \![enter,passivemode]! Do NOT delete that tag!
 		
-		"\![enter,passivemode]\1\s[10]\0\s[0]Logging in... \w5Hello, I am Lain Iwakura. \w5Please make sure to carefully read the included readme file. \x\w8\0\c\s[10]How should we refer to you, user?\n\n[half]/
+		"\![enter,passivemode]\0\s[0]\0\s[0]Logging in... \w5Hello, I am Lain Iwakura. \w5Please make sure to carefully read the included readme file. \x\w8\0\c\s[0]How should I refer to you, user?\n\n[half]/
 		\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n/
 		\![*]\q[She/Her/Hers,choicefirstsheher]\n/
 		\![*]\q[They/Them/Their,choicefirsttheythem]\e"
@@ -139,7 +139,7 @@ NameInput
 {
 	//Note that there's a \![leave,passivemode] tag in this dialogue! Don't forget about this! If you leave them in passivemode they won't talk at all and it'd sort of defeat the purpose, right? I actually forgot this for a while with Hunter and Smoker and didn't notice because OnFirstBoot only runs once, so it took me some testing to find out what was wrong. Always make sure to leave passivemode when you're done with it!
 	
-	"\1\s[10]Alright, I will call you by these pronouns from now on. \![leave,passivemode]\w8\0\s[0]Who is the user? \![open,inputbox,OnNameTeach,-1]\e"
+	"\0\s[0]Alright, I will call you by these pronouns from now on. \![leave,passivemode]\w8\0\s[0]Who is the user? \![open,inputbox,OnNameTeach,-1]\e"
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it. Make sure it's there though! Otherwise your user won't have a way to put in their name. :o
 	
@@ -324,9 +324,9 @@ normalboottalk
 		{
  		"\0\s[0]What are you doing awake, %(username)?\e"
 		
- 		"\0\s[0]...\w8\.\e"
+ 		"\0\s[0]... Hello %(username).\w8\\e"
 		
- 		"\1\s[10].\w8\0\s[0]Between 21 and 24.\e"
+ 		"\0\s[0]please sleep soon...\e"
 		}
 		else //the last timeslot we haven't done is midnight, which is what's under here.
 		{
@@ -364,11 +364,11 @@ OnClose
 				{
 					"\0\s[0]Have a good day, please.\w8"
 					
-					"\0\s[0]I really hope you have a nice day, %(username).\w8\w8"
+					"\0\s[0]I hope you have a nice day, %(username).\w8\w8"
 				}
 			elseif timeslot == "morning"
  				{
- 					"\0\s[0]It's very beautiful outside! Go enjoy the fresh air.\w8\w8"
+ 					"\0\s[0]It's very pretty outside! Go enjoy the fresh air.\w8\w8"
  				}
  			elseif timeslot == "lunch"
  				{
@@ -383,38 +383,25 @@ OnClose
  					"\0\s[0]Goodbye for now.\w8"
  				}
   			elseif timeslot == "evening"
+ 				
  				{
- 						if weekday == 6 //here, a nested if statement is checking that if it's evening, is it also saturday? You can do this to check more specific times on other days as well. You can change this to some other day if you want, or just delete this little if/else section entirely and write your own evening related close dialogue.
- 						{
- 							"\0\s[0]This is a Saturday evening close dialogue.\w8\1\s[10]Somewhat specific.\w8"
- 						}
- 						else //if it's not saturday, then it'll do this dialogue instead.
- 						{
- 							"\0\s[0]This is an evening close dialogue.\w8\1\s[10]Bye.\w8"
+ 							"\0\s[0]Goodbye, %(username).\w8"
 							
- 							"\1\s[10]This is another evening close dialogue.\w8\0\s[0]Yup.\w8"
- 						}
+ 							"\0\s[0]Have a good evening, I'm going to go drink some tea...\w8"
+							
+							"\0\s[0]Be sure to try to rest early, %(username).\w8"
+ 				}
  				}
 			elseif timeslot == "latenight"
 			 	{
- 						if weekday == 6 //This is the same check as above to see if it's Saturday. Note that this doesn't have an else statement! Sometimes you can get away with that, but make sure you test thoroughly.
-						//Of course, you can also cut this check entirely if you want.
- 						{
- 							"\0\s[0]Have a good evening, %(username).\w8"
-							
- 							"\0\s[0]Be good, %(username), it's Saturday.\w8"
- 						}
-						
- 						"\0\s[0]Sleep well, %(username).\w8"
+ 						
+						"\0\s[0]Sleep well, %(username).\w8"
 						
 						"\0\s[0]Goodnight.\w8"
  				}
 			else //like above, this is the midnight time slot since it's the last one left.
  				{
- 						if weekday == 0 //checking if it's the middle of the night on Sunday
- 						{
- 							"\0\s[0]Goodnight %(username),\w8 why didn't you sleep sooner?\w8"
- 						}
+ 						
 						"\0\s[0]Have a good rest.\w8"
 						
 						"\0\s[0]Thank you for spending time with me today.\w8"
