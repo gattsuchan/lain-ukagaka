@@ -53,29 +53,98 @@ AiTalk
 
 RandomTalk : nonoverlap
 {
+	//lain dialogue "\0\s[0] \e"
+
+	"\0\s[0]I'm not good with computers...\e"
+
+	"\0\s[0]No matter where you go, everyone is connected.\e"
+
+	"\0\s[0]I've heard that I have to avoid static electricity.\e"
+	
+	"\0\s[0]I want to assemble my Navi soon. I still haven't completed it.\e"
+
+	"\0\s[0]The border isn't so clear. \w4Soon, I'll be able to go inside. \w4And it will metaphorize me with full motion and full range. \e"
+
+	"\0\s[0]In the Wired... \w4I change.\e"
+
+	"\0\s[0]The real world isn't real at all.\e"
+
+	"\0\s[0]%(username), thank you for worrying about me.\e"
+
+	"\0\s[0]Someone asked me; /w4Are you really Iwakura Lain? /w4Are your parents really your parents? \w4\n\nIt's strange. It's such a strange thing to say, right? \e"
+
+	"\0\s[0]As I recognize myself, my absolute ego is inside me.\e"
+
+	"\0\s[0]There is no Me other than myself, is there?\e"
+
+	"\0\s[0]She is the same as me. I'm myself. I'm the only one.\e"
+
+	"\0\s[0]Kachi Kachi...\e"
+
+	"\0\s[0]It can't be true...\e"
+
+	"\0\s[0]To die is only to abandon the flesh.\e"
+
+	"\0\s[0]I made the protocol that rules the wired evolve.\e"
+
+	"\0\s[0]I can live forever in wired as an Anonymous existence, and rule here through information. \e"
+
+	"\0\s[0]Even if I could be omnipresent in the wired and affect others, /w4I can't be a god if I have no believers.\e"
+
+	"\0\s[0]I... I'm real... I'm alive... I'm here...\e"
+
+	"\0\s[0]Is this real? I'm not meant to have a body... \e"
+
+	"\0\s[0]Am I a machine?\e"
+
+	"\0\s[0]This world is so simple.\e"
+
+	"\0\s[0]Humans can really exist only inside of other humans' memory. \e"
+
+	"\0\s[0]You became my friend even though I didn't connect to you.\e"
+
+	"\0\s[0]Humans have been all connected in their unconsciousness.\e"
+
+	"\0\s[0]I'm a program to break the barrier between the real world and the wired.\e"
+
+	"\0\s[0]I exist everywhere in There./w4 I know it.\e"
+
+	"\0\s[0]I'm nowhere.../w4 If I am nowhere, what am I? /w4Where am I?\e"
+
+	"\0\s[0]There are not only memories of past. /w4But there are also memories of today or tomorrow.\e"
+
+	"\0\s[0]I'm here. So, I am with you forever.\e"
+
+	"\0\s[0]I haven't seen nightmares as much lately.\e"
+
+	"\0\s[0]For a person like me to be me... /w4 and to touch my body... /w4 It feels like I'm being torn\e"
+
+	"\0\s[0]Do you think I'm trying to run away from myself?\e"
+
+	//cou18
+
+
+
+	//default dialogue "\0\s[0] \e"
+
 	//Alright, here is where all your dialogue will go. I hope you studied how to format dialogue carefully in the walkthrough, as there is little here I can help you with. You're going to have to write most of it yourself. So instead, I'll give you a set of examples to look at.
 	
 	"\0\s[0]This is a single line of dialogue for the main character. There is no response.\e"
 	
-	"\1\s[10]This is a single line of dialogue for the side character.\e"
-	
 	//Single lines of dialogue like this are simple and easy to do.
 	
-	"\0\s[0]This is a two line piece of dialogue.\w8\1\s[10]This is the second line.\e"
-	
-	"\1\s[10]This is a two line piece of dialogue.\w8\0\s[0]This is the second line.\e"
+	"\0\s[0]This is a two line piece of dialogue.\w8\0\s[0]This is the second line.\e"
+
 	
 	//Here is what a simple two line exchange between your characters might look like. Either character can start a piece of dialogue, it doesn't always have to be the main one.
 	
-	"\0\s[0]This is a three-step piece of dialogue.\w8\1\s[10]Here is the response.\w8\0\s[0]\n\n[half]Here is the third step.\e"
+	"\0\s[0]This is a three-step piece of dialogue.\w8\0\s[0]\n\n[half]Here is the response.\w8\0\s[0]\n\n[half]Here is the third step.\e"
 	
 	//Note here that the code comes back to character 0 and spaces out their second statement with \n\n (or \n\n[half]... really whatever spacing looks best in your balloon). This makes it so the next line of dialogue from them is spaced apart from the previous in the balloon, which will make it easier for your user to read.
 	
-	"\0\s[0]This is a long piece of dialogue.\w8\1\s[10]This is my first response.\w8\0\s[0]\n\n[half]This is my response to that.\w8\1\s[10]\n\n[half]This is my second response.\w8\0\s[0]\n\n[half]And this is my last response.\w8\1\s[10]\n\n[half]This is my final word.\e"
-	
 	//As you can see, you can extend a conversation as long as you want by remembering to space things with \n\n as needed.
 	
-	"\0\s[1]This is dialogue with my embarrassed pose.\w8\1\s[11]This is also dialogue with my embarrassed pose.\e"
+	"\0\s[1]This is dialogue with my embarrassed pose.\w8\0\s[1]This is also dialogue with my embarrassed pose.\e"
 	
 	//Note here that s[0] has become s[1] and s[10] has become s[11]. As I explained in the walkthrough, the \s[] tag determines the pose of your ghost. Poses are defined in surfaces.txt within your shell's folder. If you're following my guidelines for your ghost, you should have around ten poses for each character. You can change the \s[] value depending on what expression you want your ghost to have.
 	
@@ -83,25 +152,25 @@ RandomTalk : nonoverlap
 	
 	//As you can see here, you can change your ghost's expression while they are speaking. This can make their expression vary dynamically depending on what they're talking about.
 	
-	"\0\s[0]I am saying something surprising. \1\s[12]\0\s[0]Triangle is surprised.\e"
+	"\0\s[0]I am saying something surprising. \0\s[0]Triangle is surprised.\e"
 	
 	//You can also change the side character's expression while the other character is talking. Note here that after the surprising statement, Triangle's pose is changed to s[12]. Then the focus is brought back to Girl with the \0 tag and she resumes talking. You can change focus without having the character actually say anything to accomplish just this effect.
 	
-	"\0\s[2]This is my surprised pose.\w8\1\s[12]We are shocked!\e"
+	"\0\s[2]This is my surprised pose.\w8\0\s[2]I am shocked!\e"
 	
-	"\0\s[3]This is my awkward pose.\w8\1\s[13]Check out this anime sweatdrop.\e"
+	"\0\s[3]This is my awkward pose.\w8\0\s[3]Check out this anime sweatdrop.\e"
 	
-	"\0\s[4]This is my sad pose.\w8\1\s[14]These are sad times.\e"
+	"\0\s[4]This is my sad pose.\w8\0\s[4]These are sad times.\e"
 	
-	"\0\s[5]This is my happy pose.\w8\1\s[15]How wonderful!\e"
+	"\0\s[5]This is my happy pose.\w8\0\s[5]How wonderful!\e"
 	
-	"\0\s[6]This is my contented pose.\w8\1\s[16]Life is good.\e"
+	"\0\s[6]This is my contented pose.\w8\0\s[6]Life is good.\e"
 	
-	"\0\s[7]This is my angry pose.\w8\1\s[17]No YOU shut up!\e"
+	"\0\s[7]This is my angry pose.\w8\0\s[7]No YOU shut up!\e"
 	
-	"\0\s[8]This is my thoughtful pose.\w8\1\s[18]Where did we put that thing?\e"
+	"\0\s[8]This is my thoughtful pose.\w8\0\s[8]Where did we put that thing?\e"
 	
-	"\0\s[9]This is my bored pose.\w8\1\s[19]Oh, what a surprise.\e"
+	"\0\s[9]This is my bored pose.\w8\0\s[9]Oh, what a surprise.\e"
 	
 	//Here's dialogue with all of their poses so you can see them in action. Note how the \s number changes for each of them. They don't have to match of course, you can have one character happy and one character sad and do whatever you like. These are just examples you can rewrite as you like with your own dialogue.
 	
