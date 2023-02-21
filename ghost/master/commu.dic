@@ -127,6 +127,8 @@ ReplyToGhost
 
              {
              "\0\s[0]Hello, %(res_reference0).\w8\1\s[10]Hope you're doing well.\e"
+
+             "\1\s[10]Hey, %(res_reference0).\e"
              }
        }
 }
