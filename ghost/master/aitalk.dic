@@ -380,45 +380,45 @@ RandomTalk : nonoverlap
 	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
 	if timeslot == "earlymorning"
 	{
-		"\0\s[0]This is dialogue for the early morning.\w8\1\s[10]Yup.\e"
+		"\0\s[0]It's very early... /w4 Have you slept?\e"
 		
-		"\0\s[0]This is more dialogue for early morning.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Be sure to take rests today, \w4You may feel groggy later.\e"
 	}
 	if timeslot == "morning"
 	{
-		"\0\s[0]This is dialogue for the morning.\w8\1\s[10]Yup.\e"
+		"\0\s[0]I hope you have a pleasant day, whether it be in the Wired or the real world.\e"
 		
-		"\0\s[0]This is more dialogue for the morning.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Good morning, please take the time to appreciate all of your efforts thus far. You are your thoughts and emotions. No one else. \e"
 	}
 	if timeslot == "lunch"
 	{
-		"\0\s[0]This is dialogue for lunch time.\w8\1\s[10]Yup.\e"
+		"\0\s[0]Please remember to eat a balanced lunch. \w4Eating well helps balance your mind, body, and soul...\e"
 		
-		"\0\s[0]This is more dialogue for lunch time.\w8\1\s[10]That it is.\e"
+		"\0\s[0]What's for lunch?\e"
 	}
 	if timeslot == "afternoon"
 	{
-		"\0\s[0]This is dialogue for the afternoon.\w8\1\s[10]Yup.\e"
+		"\0\s[0]Good afternoon, I hope that you have had an enjoyable day so far. /w4I would like to take the time to remind you to appreciate yourself.\e"
 		
 		"\0\s[0]This is more dialogue for the afternoon.\w8\1\s[10]That it is.\e"
 	}
 	if timeslot == "evening"
 	{
-		"\0\s[0]This is dialogue for the evening.\w8\1\s[10]Yup.\e"
+		"\0\s[0]I hope that you have spent the day well. \w4However, I feel like the day should be spent having an introspective moment.\e"
 		
-		"\0\s[0]This is more dialogue for the evening.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I'm so tired... \w4 I've been upgrading my navi all day...\e"
 	}
 	if timeslot == "latenight"
 	{
-		"\0\s[0]This is dialogue for the late night.\w8\1\s[10]Yup.\e"
+		"\0\s[0]I hope you sleep soon, perhaps you haven't had much free time during the day? \w4It's alright, you will have tomorrow...\e"
 		
-		"\0\s[0]This is more dialogue for the late night.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I'll be staying up tonight~ \w4I want to hang out with some friends in the wired.\e"
 	}
 	if timeslot == "midnight"
 	{
-		"\0\s[0]This is dialogue for midnight.\w8\1\s[10]Yup.\e"
+		"\0\s[0]It is midnight... Maybe we should power off for the day...\e"
 		
-		"\0\s[0]This is more dialogue for midnight.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I'll be sleeping soon, perhaps.\e"
 	}
 	
 	
@@ -448,11 +448,11 @@ RandomTalk : nonoverlap
 	
 	"\1\s[10]This is another piece of random dialogue to be replaced.\w8\0\s[0]Do whatever you want.\w8\1\n\n[half]\s[15]The power is yours!\w8\0\n\n[half]\s[3]Playing with power even, you could say.\e"
 	
-	"\1\s[10]More dialogue to be replaced.\w8\0\s[0]Remember you can write your own new lines of dialogue too.\w8\1\n\n[half]\s[10]You don't have to only replace the words in these.\e"
+	//"\1\s[10]More dialogue to be replaced.\w8\0\s[0]Remember you can write your own new lines of dialogue too.\w8\1\n\n[half]\s[10]You don't have to only replace the words in these.\e"
 	
-	"\1\s[10]This is another bit of dialogue to be replaced.\w8\0\s[0]aitalk.dic can be as long as you want.\e"
+	//"\1\s[10]This is another bit of dialogue to be replaced.\w8\0\s[0]aitalk.dic can be as long as you want.\e"
 	
-	"\0\s[6]More dialogue to be replaced.\w8\1\s[15]Follow your heart and write some text!\e"
+	//"\0\s[6]More dialogue to be replaced.\w8\1\s[15]Follow your heart and write some text!\e"
 	
 	
 	//--Multiple Responses
@@ -460,23 +460,23 @@ RandomTalk : nonoverlap
 	
 	{ //Again, note the brackets around these unique bits of dialogue. Dialogue that's more complicated than just a single line of "dialogue/more dialogue/more dialogue/end" usually needs to be put in brackets like this. 
 	
-	"\0\s[0]I am asking you a generic question, Triangle. Generic question?\w8\1\s[10]"
+	//"\0\s[0]I am asking you a generic question, Triangle. Generic question?\w8\1\s[10]"
 	//Notice that the last few tags set up Triangle's pose before going into his text below. You don't have to do this if you want each response to have its own pose, but if he'll have the same expression regardless of what he's saying, you might as well save yourself the work. Note this does not end with \e either, since the dialogue isn't done yet.
 	-- //You've probably seen these double dashes before in other .dic files. In this case, these dashes enclose a set of multiple responses. More on double dashes in the coding page on the walkthrough site.
-	"This is my first response."
-	"This is my second response."
-	"This is my third response."
-	"This is my fourth response."
-	"This is my fifth response."
-	"This is my sixth response."
+	//"This is my first response."
+	//"This is my second response."
+	//"This is my third response."
+	//"This is my fourth response."
+	//"This is my fifth response."
+	//"This is my sixth response."
 	//As you can see here, there are six potential replies Triangle might have to Girl's question. Each time this dialogue is called, he will randomly select one response from these six.
 	-- //The closing set of dashes for his dialogue options.
-	"\w8\0\s[0]\n\n[half]" //Now we're going back to Girl to set up for her multiple responses in return. This line of tags mostly just sets up for what she will say. Like above, you can see her pose is set in here with \s[0], so she'll have the same pose for each response, and the consistent spacing with \n\n[half].
+	//"\w8\0\s[0]\n\n[half]" //Now we're going back to Girl to set up for her multiple responses in return. This line of tags mostly just sets up for what she will say. Like above, you can see her pose is set in here with \s[0], so she'll have the same pose for each response, and the consistent spacing with \n\n[half].
 	-- //opening dashes
-	"First response to your response."
-	"Second response to your response."
-	"Third response to your response."
-	"Fourth response to your response."
+	//"First response to your response."
+	//"Second response to your response."
+	//"Third response to your response."
+	//"Fourth response to your response."
 	//Following the same pattern as above, Girl will randomly reply with one of these bits of dialogue. Note that these responses are also randomly chosen, so it may go Triangle says response one, Girl says response three, or Triangle says response four, Girl says response two, or so on and so forth. So make sure the exchange will still make sense regardless of what either of them might say.
 	-- //closing dashes
 	"\e" //Dialogue ends
@@ -485,34 +485,34 @@ RandomTalk : nonoverlap
 	//Here's another example of multiple responses. This one will let you randomly choose something to say in the middle of a sentence.
 	
 	{
-	"\0\s[0]Say either black or white.\w8\1\s[10]What if I say " 
-	-- //opening dashes
-	"green"
-	"red"
-	"purple"
-	"orange"
-	"yellow"
-	"\s[18]magenta" //Notice here I added a tag for his thoughtful pose. If he chooses magenta, he'll do this pose. You can set up individual expressions for each potential choice this way.
+	//"\0\s[0]Say either black or white.\w8\1\s[10]What if I say " 
+	//-- //opening dashes
+	//"green"
+	//"red"
+	//"purple"
+	//"orange"
+	//"yellow"
+	//"\s[18]magenta" //Notice here I added a tag for his thoughtful pose. If he chooses magenta, he'll do this pose. You can set up individual expressions for each potential choice this way.
 	-- //closing dashes
-	" instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e" //dialogue ends
+	//" instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e" //dialogue ends
 	
 	//You can see that this follows the formula of the above, although there's only one set of multiple responses in here, then Triangle continues with his sentence. You can use this feature in many different ways if you're creative.
 	}
 	
-	"\0\s[0]\f[height,20]These words are really large.\f[height,default]\w8\1\s[10]These words are a normal size. \w8\f[height,6]These words are small.\f[height,default]\e"
+	//"\0\s[0]\f[height,20]These words are really large.\f[height,default]\w8\1\s[10]These words are a normal size. \w8\f[height,6]These words are small.\f[height,default]\e"
 	
 	//You can use other fancier SakuraScript bits in your dialogue if you want to get font effects, although I won't get too much into them here. In this case, \f[height,20] changes the height of the font, in this case to 20 or to 6, and then \f[height,default] changes them back to normal. I touch more on this in the SakuraScript page of the walkthrough.
 	
-	"\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
+	//"\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
 	
 	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
 	//For the \f[color] tag, the three colors listed are the RGB values of the color you want to use for your text. Change them to whatever color you want to use. \f[default] can be an easy way to quickly go back to the default word setting in your balloon after messing with colors and effects a lot.
 	
-	"\0\s[0]Here's a link to a website. \_a[http://www.website.com/]Right here.\_a\e"
+	//"\0\s[0]Here's a link to a website. \_a[http://www.website.com/]Right here.\_a\e"
 	
 	//Along the same lines as above, you can use \_a[address] to link to certain things. Note that it ends with \_a to close the link. It's very similar to <a href=address> and </a> in html.
 	
-	"\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	//"\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
 	
 	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
 	
@@ -527,13 +527,13 @@ RandomTalk : nonoverlap
 achain
 {{CHAIN
 	//this will happen the first time the chain is called
-	"\0\s[0]Here is the second part of the chain.\w8\1\s[10]Will there be more?\e"
+	//"\0\s[0]Here is the second part of the chain.\w8\1\s[10]Will there be more?\e"
 	
 	//they will then go to this dialogue next
-	"\0\s[0]This is the third part of chained dialogue.\1\w8\s[10]This will lead to a fourth part.\e"
+	//"\0\s[0]This is the third part of chained dialogue.\1\w8\s[10]This will lead to a fourth part.\e"
 	
 	//this will be the last piece of dialogue in the chain, then they will go back to their normal dialogue
-	"\0\s[0]This is the fourth piece of chained dialogue.\1\w8\s[10]This is the end.\e:chain=end"
+	//"\0\s[0]This is the fourth piece of chained dialogue.\1\w8\s[10]This is the end.\e:chain=end"
 }}CHAIN
 
 //Pay careful attention to the CHAIN text and double brackets for these. Double brackets, CHAIN, dialogue, double brackets, CHAIN. If you are planning on making chains, I'd recommend just copying and pasting the chain example here and changing the dialogue and name of the function as you need. Less likely for mistakes to happen, you know?
@@ -541,9 +541,9 @@ achain
 
 anotherchain
 {{CHAIN
-	"\0\s[0]This is the second example of chained dialogue.\1\w8\s[10]This will only have two parts.\e"
+	//"\0\s[0]This is the second example of chained dialogue.\1\w8\s[10]This will only have two parts.\e"
 	
-	"\0\s[0]This is the last piece of the second example of chained dialogue\1\w8\s[10]This will end here.\e:chain=end"
+	//"\0\s[0]This is the last piece of the second example of chained dialogue\1\w8\s[10]This will end here.\e:chain=end"
 }}CHAIN
 
 //You can make chains as long or as shot as you want! Just make sure to end the chain when you're done.
@@ -639,7 +639,7 @@ OnSecondChange
 		}
 	if mikireflag == 0 && reference1 == 1 //Dialogue for putting them off the screen. You could make this a unique line if you wanted (Like "Hey! What are you doing?"), and have MikireTalk below be for if they continue to be offscreen ("Why are you leaving me out here? Help!" for example). I'll add an example bit of dialogue and comment it out, you can uncomment it and use it if you like, or just leave it out and use MikireTalk below.
 	{
-		//"\0\s[0]You've moved me off screen."
+		"\0\s[0]You've moved me off screen..."
 		
 		MikireTalk
 	}
@@ -652,7 +652,7 @@ OnSecondChange
 	{
  		//This dialogue is for when the two characters are overlapping each other. If you don't want your characters to care, you can just leave this blank.
 		
- 		"\0\s[0]Me and Triangle are overlapping.\w8\1\s[19]That's strange since your resolution is %screenwidthx%screenheight, %(username). Shouldn't we have enough space?\4\e"
+ 		//"\0\s[0]Me and Triangle are overlapping.\w8\1\s[19]That's strange since your resolution is %screenwidthx%screenheight, %(username). Shouldn't we have enough space?\4\e"
 		
 		//You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
 		//Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
@@ -664,7 +664,7 @@ OnSecondChange
  
 MikireTalk
  {
-	"\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring her back."
+	"\0\s[0]I'm off the screen.\w4\0\s[0]You can push Ctrl-Shift-F12 to bring me back."
 	//Note the hotkey combo Triangle mentions. He's telling the truth, that should bring her back on the screen.
  }
 
@@ -673,7 +673,7 @@ MikireTalk
  
 EndMikireTalk
  {
-	"\0\s[0]I'm no longer off the screen.\w8\1\s[19]What a shame.\w8\0\s[9]\n\n[half]Shut up.\e"
+	"\0\s[0]I'm no longer off the screen... \w4Thank you.\e"
  }
 
 
