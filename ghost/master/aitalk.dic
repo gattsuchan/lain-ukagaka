@@ -63,7 +63,7 @@ RandomTalk : nonoverlap
 	
 	"\0\s[0]I want to assemble my Navi soon. I still haven't completed it.\e"
 
-	"\0\s[0]The border isn't so clear. \w4Soon, I'll be able to go inside. \w4And it will metaphorize me with full motion and full range. \e"
+	"\0\s[0]The border isn't so clear. \w4Soon, I'll be able to go inside. \w4And it will metaphorize me with full motion and full range.\e"
 
 	"\0\s[0]In the Wired... \w4I change.\e"
 
@@ -71,7 +71,7 @@ RandomTalk : nonoverlap
 
 	"\0\s[0]%(username), thank you for worrying about me.\e"
 
-	"\0\s[0]Someone asked me; /w4Are you really Iwakura Lain? /w4Are your parents really your parents? \w4\n\nIt's strange. It's such a strange thing to say, right? \e"
+	"\0\s[0]Someone asked me; \w4Are you really Iwakura Lain? \w4Are your parents really your parents? \w4\n\nIt's strange. It's such a strange thing to say, right?\e"
 
 	"\0\s[0]As I recognize myself, my absolute ego is inside me.\e"
 
@@ -87,19 +87,19 @@ RandomTalk : nonoverlap
 
 	"\0\s[0]I made the protocol that rules the wired evolve.\e"
 
-	"\0\s[0]I can live forever in wired as an Anonymous existence, and rule here through information. \e"
+	"\0\s[0]I can live forever in wired as an Anonymous existence, and rule here through information.\e"
 
-	"\0\s[0]Even if I could be omnipresent in the wired and affect others, /w4I can't be a god if I have no believers.\e"
+	"\0\s[0]Even if I could be omnipresent in the wired and affect others, \w4I can't be a god if I have no believers.\e"
 
-	"\0\s[0]I... I'm real... I'm alive... I'm here...\e"
+	"\0\s[0]I... I'm real... \w4I'm alive... \w4I'm here...\e"
 
-	"\0\s[0]Is this real? I'm not meant to have a body... \e"
+	"\0\s[0]Is this real? I'm not meant to have a body...\e"
 
 	"\0\s[0]Am I a machine?\e"
 
 	"\0\s[0]This world is so simple.\e"
 
-	"\0\s[0]Humans can really exist only inside of other humans' memory. \e"
+	"\0\s[0]Humans can really exist only inside of other humans' memory.\e"
 
 	"\0\s[0]You became my friend even though I didn't connect to you.\e"
 
@@ -107,17 +107,17 @@ RandomTalk : nonoverlap
 
 	"\0\s[0]I'm a program to break the barrier between the real world and the wired.\e"
 
-	"\0\s[0]I exist everywhere in There./w4 I know it.\e"
+	"\0\s[0]I exist everywhere in There.\w4I know it.\e"
 
-	"\0\s[0]I'm nowhere.../w4 If I am nowhere, what am I? /w4Where am I?\e"
+	"\0\s[0]I'm nowhere...\w4If I am nowhere, what am I? \w4Where am I?\e"
 
-	"\0\s[0]There are not only memories of past. /w4But there are also memories of today or tomorrow.\e"
+	"\0\s[0]There are not only memories of past. \w4But there are also memories of today or tomorrow.\e"
 
 	"\0\s[0]I'm here. So, I am with you forever.\e"
 
 	"\0\s[0]I haven't seen nightmares as much lately.\e"
 
-	"\0\s[0]For a person like me to be me... /w4 and to touch my body... /w4 It feels like I'm being torn\e"
+	"\0\s[0]For a person like me to be me... \w4And to touch my body... \w4It feels like I'm being torn.\e"
 
 	"\0\s[0]Do you think I'm trying to run away from myself?\e"
 
