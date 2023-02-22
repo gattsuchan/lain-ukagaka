@@ -270,27 +270,27 @@ RandomTalk : nonoverlap
 	
 	if month == 1
 	{
-		"\0\s[0]This is dialogue for January.\w8\1\s[10]Yup.\e"
+		"\0\s[0]January is a month that symbolizes new beginnings or a new beginning. \w4It is a nice time to take stock of your life and appreciate what you have done so far. \w4I encourage you to take some time out of your day tonight and reflect on the things you have accomplished. \w4Simply something in your life that you are proud of. Reflect on that for a moment...\e"
 		
-		"\0\s[0]This is more dialogue for January.\w8\1\s[10]That it is.\e"
+		"\0\s[0]It's been so cold...\e"
 	}
 	if month == 2
 	{
-		"\0\s[0]This is dialogue for February.\w8\1\s[10]Yup.\e"
+		"\0\s[0]This month is a time for patience and acceptance. \w4February is a month that symbolizes the calm after a storm. \w4It is time where you can accept the past while still holding on to a future. It's okay... \w8You are on the right track.\e"
 		
-		"\0\s[0]This is more dialogue for February.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I don't think I've ever gotten a Valentine... \w4It doesn't matter to me much, but I've always wanted to try the chocolate~.\e"
 	}
 	if month == 3
 	{
-		"\0\s[0]This is dialogue for March.\w8\1\s[10]Yup.\e"
+		"\0\s[0]This month symbolizes new life. \w4It is a month of rebirth, when the trees turn green and life blooms again after winter. \w4You should spend this month enjoying the little things in life... \w4Taking the time to enjoy a flower, or a butterfly. \w4It will help you reconnect with yourself. \w4I think the month of March is a month of self love. \w4The month to appreciate small joys and remember to enjoy being alive.\e"
 		
-		"\0\s[0]This is more dialogue for March.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I can't wait to see how green everything can get...\e"
 	}
 	if month == 4
 	{
-		"\0\s[0]This is dialogue for April.\w8\1\s[10]Yup.\e"
+		"\0\s[0]It is a month of optimism, when things start to warm up before summer arrives. \w4April is an ideal month to make new beginnings to better your own life. \w4However, I believe that you should also take a moment to appreciate the things that are currently going well in your life.\e"
 		
-		"\0\s[0]This is more dialogue for April.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I really enjoy watching the rain... \w4It fills me with such peace of mind.\e"
 	}
 	if month == 5
 	{
