@@ -129,93 +129,93 @@ RandomTalk : nonoverlap
 
 	//Alright, here is where all your dialogue will go. I hope you studied how to format dialogue carefully in the walkthrough, as there is little here I can help you with. You're going to have to write most of it yourself. So instead, I'll give you a set of examples to look at.
 	
-	"\0\s[0]This is a single line of dialogue for the main character. There is no response.\e"
+	//"\0\s[0]This is a single line of dialogue for the main character. There is no response.\e"
 	
 	//Single lines of dialogue like this are simple and easy to do.
 	
-	"\0\s[0]This is a two line piece of dialogue.\w8\0\s[0]This is the second line.\e"
+	//"\0\s[0]This is a two line piece of dialogue.\w8\0\s[0]This is the second line.\e"
 
 	
 	//Here is what a simple two line exchange between your characters might look like. Either character can start a piece of dialogue, it doesn't always have to be the main one.
 	
-	"\0\s[0]This is a three-step piece of dialogue.\w8\0\s[0]\n\n[half]Here is the response.\w8\0\s[0]\n\n[half]Here is the third step.\e"
+	//"\0\s[0]This is a three-step piece of dialogue.\w8\0\s[0]\n\n[half]Here is the response.\w8\0\s[0]\n\n[half]Here is the third step.\e"
 	
 	//Note here that the code comes back to character 0 and spaces out their second statement with \n\n (or \n\n[half]... really whatever spacing looks best in your balloon). This makes it so the next line of dialogue from them is spaced apart from the previous in the balloon, which will make it easier for your user to read.
 	
 	//As you can see, you can extend a conversation as long as you want by remembering to space things with \n\n as needed.
 	
-	"\0\s[1]This is dialogue with my embarrassed pose.\w8\0\s[1]This is also dialogue with my embarrassed pose.\e"
+	//"\0\s[1]This is dialogue with my embarrassed pose.\w8\0\s[1]This is also dialogue with my embarrassed pose.\e"
 	
 	//Note here that s[0] has become s[1] and s[10] has become s[11]. As I explained in the walkthrough, the \s[] tag determines the pose of your ghost. Poses are defined in surfaces.txt within your shell's folder. If you're following my guidelines for your ghost, you should have around ten poses for each character. You can change the \s[] value depending on what expression you want your ghost to have.
 	
-	"\0\s[5]In this dialogue, I will go from happy \s[4]to sad.\e"
+	//"\0\s[5]In this dialogue, I will go from happy \s[4]to sad.\e"
 	
 	//As you can see here, you can change your ghost's expression while they are speaking. This can make their expression vary dynamically depending on what they're talking about.
 	
-	"\0\s[0]I am saying something surprising. \0\s[0]Triangle is surprised.\e"
+	//"\0\s[0]I am saying something surprising. \0\s[0]Triangle is surprised.\e"
 	
 	//You can also change the side character's expression while the other character is talking. Note here that after the surprising statement, Triangle's pose is changed to s[12]. Then the focus is brought back to Girl with the \0 tag and she resumes talking. You can change focus without having the character actually say anything to accomplish just this effect.
 	
-	"\0\s[2]This is my surprised pose.\w8\0\s[2]I am shocked!\e"
+	//"\0\s[2]This is my surprised pose.\w8\0\s[2]I am shocked!\e"
 	
-	"\0\s[3]This is my awkward pose.\w8\0\s[3]Check out this anime sweatdrop.\e"
+	//"\0\s[3]This is my awkward pose.\w8\0\s[3]Check out this anime sweatdrop.\e"
 	
-	"\0\s[4]This is my sad pose.\w8\0\s[4]These are sad times.\e"
+	//"\0\s[4]This is my sad pose.\w8\0\s[4]These are sad times.\e"
 	
-	"\0\s[5]This is my happy pose.\w8\0\s[5]How wonderful!\e"
+	//"\0\s[5]This is my happy pose.\w8\0\s[5]How wonderful!\e"
 	
-	"\0\s[6]This is my contented pose.\w8\0\s[6]Life is good.\e"
+	//"\0\s[6]This is my contented pose.\w8\0\s[6]Life is good.\e"
 	
-	"\0\s[7]This is my angry pose.\w8\0\s[7]No YOU shut up!\e"
+	//"\0\s[7]This is my angry pose.\w8\0\s[7]No YOU shut up!\e"
 	
-	"\0\s[8]This is my thoughtful pose.\w8\0\s[8]Where did we put that thing?\e"
+	//"\0\s[8]This is my thoughtful pose.\w8\0\s[8]Where did we put that thing?\e"
 	
-	"\0\s[9]This is my bored pose.\w8\0\s[9]Oh, what a surprise.\e"
+	//"\0\s[9]This is my bored pose.\w8\0\s[9]Oh, what a surprise.\e"
 	
 	//Here's dialogue with all of their poses so you can see them in action. Note how the \s number changes for each of them. They don't have to match of course, you can have one character happy and one character sad and do whatever you like. These are just examples you can rewrite as you like with your own dialogue.
 	
-	"\0\s[0]I am pausing for 14ms. \w8\w6The pause is over.\e"
+	//"\0\s[0]I am pausing for 14ms. \w8\w6The pause is over.\e"
 	
 	//You can use the \w tag to time your dialogue. \w goes from 1-9, although I usually leave it at 8 to be safe, and while you can't go above 9, you can layer \w tags to add up to higher numbers. Here, \w8 and \w6 combine to make 14.
 	
-	"\0\s[0]I am pausing \w4for dramatic \w6emphasis. \w8P\w6 - \w6A - \w6U - \w6S - \w6E.\e"
+	//"\0\s[0]I am pausing \w4for dramatic \w6emphasis. \w8P\w6 - \w6A - \w6U - \w6S - \w6E.\e"
 	
 	//You can also pause multiple times within sentences, like so. At the end, you can pause between letters if your ghost is spelling something.
 	
-	"\1\s[10]Here is dialogue on one line.\nHere is dialogue on the next line.\e"
+	//"\1\s[10]Here is dialogue on one line.\nHere is dialogue on the next line.\e"
 	
 	//You can use \n to move dialogue down one line, like hitting enter once. 
 	
-	"\0\s[0]This is dialogue referring to %(username).\w8\1\s[10]Hello, %(username).\e"
+	//"\0\s[0]This is dialogue referring to %(username).\w8\1\s[10]Hello, %(username).\e"
 	
 	//Here, the characters are using the %(username) envelope to use the user's name. More on envelopes in word.dic. You can use any envelope you want in dialogue, practically.
 	
-	"\1\s[10]Here is dialogue using %(username)'s pronouns.\w8\0\s[0]%(heshe) went to the store and got %(himher)self some milk for %(hisher) cat.\e"
+	//"\1\s[10]Here is dialogue using %(username)'s pronouns.\w8\0\s[0]%(heshe) went to the store and got %(himher)self some milk for %(hisher) cat.\e"
 	
 	//You can use the pronouns set up during their first boot (see bootend.dic) or in the config menu (menu.dic) in sentences like this as well. You can see that the envelope %(heshe) replaces where he or she would be in the sentence, and so on for the rest of them. This makes it so they use the correct pronoun in the right place.
 	
-	"\1\s[10]Here we'll use the envelope 'exampleenvelope' to show what it looks like in a balloon.\w8\0\s[0]%(exampleenvelope).\e"
+	//"\1\s[10]Here we'll use the envelope 'exampleenvelope' to show what it looks like in a balloon.\w8\0\s[0]%(exampleenvelope).\e"
 	
 	//As you can see, you can put any envelope from word.dic in here, as long as you properly format it as an envelope by putting a percent sign in front and putting it in parentheses. %(username), %(icecream), %(bunnies), whatever, this is up to you as long as you've defined it in word.dic. You can see how the values stored in the envelope appear in the balloon when the dialogue is called.
 	//Do note that you cannot put quotation marks in your dialogue. If you're using Notepad++ which you should be doing, you'll see the line break and turn black if you do. Use apostrophes instead.
 	
-	"\1\s[10]Here we'll use the envelope 'blanklist' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist).\e"
+	//"\1\s[10]Here we'll use the envelope 'blanklist' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist).\e"
 	
-	"\1\s[10]Here we'll use the envelope 'blanklist2' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist2).\e"
+	//"\1\s[10]Here we'll use the envelope 'blanklist2' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist2).\e"
 	
-	"\1\s[10]Here we'll use the envelope 'blanklist3' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist3).\e"
+	//"\1\s[10]Here we'll use the envelope 'blanklist3' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist3).\e"
 	
 	//And here are more examples using the blanklists I set up in word.dic.
 	
-	"\1\s[10]Here we'll use the envelope 'usersfolder' to pretend to look at the user's files.\w8\0\s[0]Hey, have you looked at %(usersfolder) lately?\w8\1\s[19]\n\n[half]No.\e"
+	//"\1\s[10]Here we'll use the envelope 'usersfolder' to pretend to look at the user's files.\w8\0\s[0]Hey, have you looked at %(usersfolder) lately?\w8\1\s[19]\n\n[half]No.\e"
 	
 	//You can use the usersfolder envelope creatively if you like, haha.
 	
-	"\1\s[10]Here we'll use the envelope 'internalenvelope' to show an envelop containing another envelope.\w8\0\s[0]%(internalenvelope).\e"
+	//"\1\s[10]Here we'll use the envelope 'internalenvelope' to show an envelop containing another envelope.\w8\0\s[0]%(internalenvelope).\e"
 	
 	//Here's an example using the internal envelope I mentioned in word.dic. Basically, a function within a function. More on that kind of thing on the coding page of the walkthrough.
 	
-	"\1\s[10]Here is dialogue referring to Anchor 1.\w8\0\s[0]Here is dialogue referring to Anchor 2 and Anchor 3.\e"
+	//"\1\s[10]Here is dialogue referring to Anchor 1.\w8\0\s[0]Here is dialogue referring to Anchor 2 and Anchor 3.\e"
 	
 	//Anchor words are defined more in anchor.dic. Note here when you see this dialogue that Anchor 1, 2, and 3 become links when spoken, even if they weren't written as links in the dialogue in this file. This is why anchor words are convenient, you don't have to set up link code every time they say a certain word. Try clicking the links when they appear to see what they lead to. It'll give you an idea of exactly how anchors work.
 	
@@ -223,11 +223,11 @@ RandomTalk : nonoverlap
 	//--Chains
 	//Chain dialogue is unique. A dialogue chain consists of multiple bits of dialogue that get called in order over a period of time.
 	
-	"\0\s[0]This is the first part of a chained dialogue.\w8\1\s[10]Second part to come when we next speak.\e:chain=achain"
+	//"\0\s[0]This is the first part of a chained dialogue.\w8\1\s[10]Second part to come when we next speak.\e:chain=achain"
 	
 	//Note here that instead of ending the dialogue with the normal end tag of \e, it ends with \e:chain=achain. This will link down below to a chunk of code outside RandomTalk called achain. You can scroll down and find it now if you want. You can name your chain anything you want, it'd just follow the same format of \e:chain=yourchainsname. Once a dialogue has entered a chain, they won't say any other random dialogue until the chain is finished.
 	
-	"\0\s[0]This will lead to the second piece of chained dialogue.\w8\1\s[10]This will have another chain attached to it.\e:chain=anotherchain"
+	//"\0\s[0]This will lead to the second piece of chained dialogue.\w8\1\s[10]This will have another chain attached to it.\e:chain=anotherchain"
 	
 	//Here, this will link to a different chain to continue the conversation. You can scroll down to the section on chains to see this in action.
 	
@@ -235,26 +235,26 @@ RandomTalk : nonoverlap
 	//--If statements
 	//You can put if statements in RandomTalk! They don't even need Else statements, unless you want to keep two sets of statements completely separate - for example, you have one pool of conversations for when there are two characters, and one for if there are three characters. You wouldn't want these to overlap, so you'd put one pool in the if statement and the other in the else. Most of the time though, you won't need an Else statement for these, since they'll mostly only be adding in dialogue if the if statement is true. 
 	
-	if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
+	//if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
 	{
 	//Then these conversations are available! Note the brackets enclosing this set of dialogue.
-	"\0\s[0]Here is dialogue related to the default shell.\w8\1\s[10]You can use this to comment on clothing your ghost is wearing.\e"
+	//"\0\s[0]Here is dialogue related to the default shell.\w8\1\s[10]You can use this to comment on clothing your ghost is wearing.\e"
 	
-	"\0\s[0]Here is more dialogue related to the default shell.\e"
+	//"\0\s[0]Here is more dialogue related to the default shell.\e"
 	}
 	
 	//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.
-	if nowshell == "Hypothetical Shell that doesn't actually exist"
+	//if nowshell == "Hypothetical Shell that doesn't actually exist"
 	{
-	"\0\s[0]This is dialogue related to a shell we don't actually have.\w8\1\s[18]Unless it somehow pops into existence.\e"
+	//"\0\s[0]This is dialogue related to a shell we don't actually have.\w8\1\s[18]Unless it somehow pops into existence.\e"
 	
-	"\0\s[0]This is more dialogue related to a hypothetical shell we don't actually have.\w8\1\s[19]It's not happening.\e"
+	//"\0\s[0]This is more dialogue related to a hypothetical shell we don't actually have.\w8\1\s[19]It's not happening.\e"
 	}
 	//After the if statement is done, you can continue with dialogue as normal. As you can see, you can move the ifs around in here, it doesn't really matter. You may want to stick them all in one place together if you want to keep track of them, or you can scatter them around your dialogue as you please. It's up to you. These two lines below are just normal random dialogue.
 	
-	"\1\s[10]This is generic dialogue.\w8\0\s[0]This can be replaced with whatever you want.\e"
+	//"\1\s[10]This is generic dialogue.\w8\0\s[0]This can be replaced with whatever you want.\e"
 	
-	"\1\s[10]This is more generic dialogue to be replaced.\w8\0\s[0]Do whatever you like with it.\e"
+	//"\1\s[10]This is more generic dialogue to be replaced.\w8\0\s[0]Do whatever you like with it.\e"
 	
 	//And here we're going to go back into ifs! You see, you can space out your ifs with normal dialogue if you want, as I just mentioned. Anyway, you can set up if statements to check for a lot of different things! One of the cooler ones I think are ones set to check for time. This one for example checks if the month is December.
 	
@@ -268,6 +268,8 @@ RandomTalk : nonoverlap
 	//So you can use these to check for any number of situations. I think this feature is really neat, so I'm going to set up some quick default responses for the months, days, and time of day. If you don't want to do these, you can just delete this whole set of ifs down to the //--Double Envelopes section below.
 	//You can also nest ifs within these, so you could check if it was the 25 of April in the morning for example. You can also add or take away dialogue from these as you like, so if you want to have five dialogue options for April or one for January, you can totally do that.
 	
+
+	//most of these are original dialogues from character.ai
 	if month == 1
 	{
 		"\0\s[0]January is a month that symbolizes new beginnings or a new beginning. \w4It is a nice time to take stock of your life and appreciate what you have done so far. \w4I encourage you to take some time out of your day tonight and reflect on the things you have accomplished. \w4Simply something in your life that you are proud of. Reflect on that for a moment...\e"
@@ -337,45 +339,45 @@ RandomTalk : nonoverlap
 	//These ifs check what day of the week it is.
 	if weekday == 1
 	{
-		"\0\s[0]This is dialogue for Monday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]Time to get focused.\e"
 		
-		"\0\s[0]This is more dialogue for Monday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Monday...\e"
 	}
 	if weekday == 2
 	{
-		"\0\s[0]This is dialogue for Tuesday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]You can do it!\e"
 		
-		"\0\s[0]This is more dialogue for Tuesday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Good luck today~\e"
 	}
 	if weekday == 3
 	{
-		"\0\s[0]This is dialogue for Wednesday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]I wonder what next week will bring...\e"
 		
-		"\0\s[0]This is more dialogue for Wednesday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]I want to eat something tasty to get me through the rest of this week.\e"
 	}
 	if weekday == 4
 	{
-		"\0\s[0]This is dialogue for Thursday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]In Japanese, the first kanji for Thursday looks like a tree...\e"
 		
-		"\0\s[0]This is more dialogue for Thursday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]It's almost time for the weekend.\e"
 	}
 	if weekday == 5
 	{
-		"\0\s[0]This is dialogue for Friday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]The week is almost over. \w4 Did you accomplish a lot?\e"
 		
-		"\0\s[0]This is more dialogue for Friday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Happy Friday!\e"
 	}
 	if weekday == 6
 	{
-		"\0\s[0]This is dialogue for Saturday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]Have fun today~\e"
 		
-		"\0\s[0]This is more dialogue for Saturday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Time for a break...\e"
 	}
 	if weekday == 7
 	{
-		"\0\s[0]This is dialogue for Sunday.\w8\1\s[10]Yup.\e"
+		"\0\s[0]It's Sunday...\e"
 		
-		"\0\s[0]This is more dialogue for Sunday.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Did you relax this weekend?\e"
 	}
 	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
 	if timeslot == "earlymorning"
@@ -400,7 +402,7 @@ RandomTalk : nonoverlap
 	{
 		"\0\s[0]Good afternoon, I hope that you have had an enjoyable day so far. /w4I would like to take the time to remind you to appreciate yourself.\e"
 		
-		"\0\s[0]This is more dialogue for the afternoon.\w8\1\s[10]That it is.\e"
+		"\0\s[0]Good afternoon.\e"
 	}
 	if timeslot == "evening"
 	{
@@ -446,7 +448,7 @@ RandomTalk : nonoverlap
 	
 	//Now we're going to go back to normal dialogue for a bit of a break. Feel free to rewrite this all as you like.
 	
-	"\1\s[10]This is another piece of random dialogue to be replaced.\w8\0\s[0]Do whatever you want.\w8\1\n\n[half]\s[15]The power is yours!\w8\0\n\n[half]\s[3]Playing with power even, you could say.\e"
+	//"\1\s[10]This is another piece of random dialogue to be replaced.\w8\0\s[0]Do whatever you want.\w8\1\n\n[half]\s[15]The power is yours!\w8\0\n\n[half]\s[3]Playing with power even, you could say.\e"
 	
 	//"\1\s[10]More dialogue to be replaced.\w8\0\s[0]Remember you can write your own new lines of dialogue too.\w8\1\n\n[half]\s[10]You don't have to only replace the words in these.\e"
 	
