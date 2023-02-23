@@ -63,7 +63,7 @@ Select.SetWallpaper_Cancel
  
 OnInstallBegin
  {
-	"\0\s[0]This is the beginning dialogue for installing a file.\w8\1\s[10]This zip or nar contains an install.txt file.\e"
+	"\0\s[0]I am installing a file.\w8\1\s[10]This zip or nar contains an install.txt file.\e"
  }
 
  //---- OnInstallComplete -------------------------------------------------------
@@ -87,28 +87,28 @@ OnInstallComplete
 		}
 		else //For any other shell they may install.
 		{
-		"\s[0]We've installed a new shell.\w8\1\s[10]It's called  %(reference1).\e"
+		"\s[0]I've installed a new shell.\w8\1\s[10]It's called  %(reference1).\e"
 		//%(reference1) here would be the name of the shell they installed. Replace if needed.
 		}
  	}
 	elseif reference0 == "ghost" //if the type of the file they're installing is a ghost.
  	{
-		"\s[0]We've installed a new Ghost.\w8\1\s[10]It's called %(reference1).\e"
+		"\s[0]I've installed a new Ghost.\w8\1\s[10]It's called %(reference1).\e"
 		//Reference1 here would be the name of the ghost. Replace as needed.
  	}
 	elseif reference0 == "balloon" //if the type of file is a balloon
  	{
-		"\s[0]We've installed a new balloon.\w8\1\s[10]It's called %(reference1).\e"
+		"\s[0]I've installed a new balloon.\w8\1\s[10]It's called %(reference1).\e"
 		//Reference1 here would be the name of the balloon. Replace as needed.
  	}
 	elseif reference0 == "plugin" //if the type of file is a plug-in, like a saori of some kind.
  	{
-		"\s[0]We've installed a plug-in.\w8\1\s[10]It's called %(reference1).\e"
+		"\s[0]I've installed a plug-in.\w8\1\s[10]It's called %(reference1).\e"
 		//Reference1 here would be the name of the plug-in. Replace as needed.
  	}
 	elseif reference0 == "calendar skin" //if the type of file is a calendar skin
 	{
-		"\s[0]We've installed a calendar skin.\w8\1\s[10]It's called %(reference1)."
+		"\s[0]I've installed a calendar skin.\w8\1\s[10]It's called %(reference1)."
 	}
 	else //for any other file they'd install
 	{
@@ -140,7 +140,7 @@ OnInstallFailure
  
 OnInstallRefuse
  {
-	"\0\s[0]We can't install this. \w4It may be for %(reference0) instead.\e"
+	"\0\s[0]I can't install this. \w4It may be for %(reference0) instead.\e"
 	
 	//reference0 in this function refers to the ghost this file is associated with, probably the name of the ghost listed in its install.txt file. You would see this if you dropped a shell made for a different ghost on your current ghost, for example. They can't install a shell for themselves they can't use, right? Anyway, replace this with what you wish, you can use the reference0 envelope or not if you want.
  }
@@ -155,7 +155,7 @@ OnInstallRefuse
 
 OnVanishSelecting
 {
-	"\0\s[0]The user is deciding whether or not to uninstall us.\w8\1\s[10]If you're testing this, be careful about what you click here, huh?\e"
+	"\0\s[0]Do you want to uninstall Lain?\e"
 }
 
 //OnVanishSelected
@@ -163,7 +163,7 @@ OnVanishSelecting
 
 OnVanishSelected
 {
-	"\0\s[0]The user has decided to uninstall us.\w8\1\s[10]Bye.\w9\w9\e"
+	"\0\s[0]Goodbye.\w9\w9\e"
 }
 
 
@@ -172,7 +172,7 @@ OnVanishSelected
 
 OnVanishCancel
 {
-	"\0\s[0]The user has decided not to uninstall us after all.\e"
+	"\0\s[0]Oh, alright. Uninstallation cancelled.\e"
 }
 
 //--OnVanishButtonHold
@@ -180,7 +180,7 @@ OnVanishCancel
 
 OnVanishButtonHold
 {
-	"\1\s[10]This dialogue displays when the user double clicks on the balloon when we're saying we're going to uninstall ourselves.\e"
+	"\0\s[0]Uninstalltion cancelled.\e"
 }
 
 
@@ -189,7 +189,7 @@ OnVanishButtonHold
  
 OnVanished
  {
-	"\0\s[0]\1\s[10]%(reference0) has been uninstalled.\w8\0\s[0]Harsh.\e"
+	"\0\s[0]\1\s[10]%(reference0) has been uninstalled.\e"
 	
 	//reference0 here is the name of the other ghost.
 }
@@ -213,9 +213,9 @@ OnVanished
  
 OnBIFFBegin
  {
-	"\0\s[0]This is the starting dialogue for checking email.\e"
+	"\0\s[0]Navi, do I have mail?\e"
 	
-	"\1\s[10]This is another starting dialogue for checking email.\e"
+	"\0\s[0]Checking your email.\e"
  }
 
  
@@ -258,7 +258,7 @@ OnBIFFFailure
 	}
  	elseif reference0 == "kick" //If the account blocks the ghost from accessing it. I think gmail may do this at first to try and protect your account from unapproved applications using it. It gives you the option to change the setting in the warning email they send you about it.
 	{
-		"\0\s[0]We can't access the account.\e"
+		"\0\s[0]I can't access the account.\e"
  	}
 	elseif reference0 == "defect" //If the information put into the POP menu is wrong.
  	{
@@ -268,7 +268,7 @@ OnBIFFFailure
 	}
  	else //if there's some other kind of error.
 	{
-		"\0\s[0]We can't connect to the account.\w8\1\s[10]The error returned is '%(reference[0])'.\e"
+		"\0\s[0]I can't connect to the account.\w8\1\s[10]The error returned is '%(reference[0])'.\e"
 		
 		//reference0 here stores the error message the email server would have given the ghost, hopefully.
  	}
@@ -392,7 +392,7 @@ OnUpdate.OnMD5CompareFailure
  
 
  //---- OnHeadlinesenseBegin -----------------------------------------------------------
- //This dialogue comes up when you select something in your RSS feed as an intro, like the other On[Thing]Begin things we've seen so far. Replace as you need.
+ //This dialogue comes up when you select something in your RSS feed as an intro, like the other On[Thing]Begin things I've seen so far. Replace as you need.
  
 OnHeadlinesenseBegin
  {

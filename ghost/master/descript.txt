@@ -15,7 +15,7 @@ type,ghost
 //This defines which is the main character and which is the side character. The main character of a ghost is referred to as "sakura" by the code, and the side character as "kero". If you see these names in the functions, that's who they are referring to. Replace the names as you need.
 
 
-sakura.name,Lain
+sakura.name,lain
 kero.name,Triangle
 
 
